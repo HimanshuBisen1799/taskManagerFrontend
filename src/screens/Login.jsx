@@ -99,7 +99,7 @@ const LoginScreen = () => {
     try {
       const { token } = await login({ username, password });
       localStorage.setItem("token", token);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       setErrorMessage("Invalid username or password. Please try again.");
     }

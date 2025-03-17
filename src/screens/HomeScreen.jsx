@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getTasks, updateTaskStatus, deleteTask } from "../api";
@@ -83,7 +81,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white p-10">
+    <div className="min-h-screen bg-gradient-to-r from-gray-50 to-gray-100 text-gray-900 p-10">
       <motion.div
         className="container mx-auto space-y-8"
         variants={containerVariants}
@@ -97,7 +95,7 @@ const HomeScreen = () => {
             <select
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
-              className="px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-green-400 border border-gray-600 shadow-sm"
+              className="px-4 py-2 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-green-400 border border-gray-300 shadow-sm"
             >
               <option value="">Priority</option>
               <option value="low">Low</option>
@@ -107,7 +105,7 @@ const HomeScreen = () => {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-green-400 border border-gray-600 shadow-sm"
+              className="px-4 py-2 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-green-400 border border-gray-300 shadow-sm"
             >
               <option value="">Status</option>
               <option value="pending">Pending</option>
@@ -115,13 +113,13 @@ const HomeScreen = () => {
             </select>
             <button
               onClick={resetFilters}
-              className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold shadow-md"
+              className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg font-semibold shadow-md"
             >
               Reset
             </button>
             <button
               onClick={() => navigate("/task")}
-              className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-semibold shadow-md"
+              className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg font-semibold shadow-md"
             >
               Create Task
             </button>
@@ -129,10 +127,10 @@ const HomeScreen = () => {
         </div>
 
         {/* Task Table */}
-        <div className="overflow-x-auto bg-gray-800 rounded-lg shadow-lg p-6">
-          <table className="w-full text-white">
+        <div className="overflow-x-auto bg-white rounded-lg shadow-lg p-6">
+          <table className="w-full text-gray-900">
             <thead>
-              <tr className="border-b border-gray-700 text-sm font-semibold text-gray-300">
+              <tr className="border-b border-gray-200 text-sm font-semibold text-gray-700">
                 <th className="py-3 px-4 text-left">Title</th>
                 <th className="py-3 px-4 text-left">Due Date</th>
                 <th className="py-3 px-4 text-left">Status</th>
@@ -143,7 +141,7 @@ const HomeScreen = () => {
             <tbody>
               {filteredTasks.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="py-6 text-center text-lg text-gray-400">
+                  <td colSpan="5" className="py-6 text-center text-lg text-gray-500">
                     No tasks available
                   </td>
                 </tr>
@@ -156,7 +154,7 @@ const HomeScreen = () => {
                       initial="hidden"
                       animate="visible"
                       exit="hidden"
-                      className="border-b border-gray-700 hover:bg-gray-700"
+                      className="border-b border-gray-200 hover:bg-gray-50"
                     >
                       <td
                         className="py-3 px-4 cursor-pointer"
@@ -172,26 +170,26 @@ const HomeScreen = () => {
                           value={task.status}
                           onChange={() => handleTaskStatusChange(task._id)}
                           renderInput={(params) => (
-                            <TextField {...params} className="bg-gray-700 text-white rounded-lg" />
+                            <TextField {...params} className="bg-white text-gray-900 rounded-lg" />
                           )}
                         />
                       </td>
                       <td className="py-3 px-4 font-bold capitalize">{task.priority}</td>
                       <td className="py-3 px-4 space-x-3">
                         <button
-                          className="bg-green-600 hover:bg-green-700 text-white py-1 px-2 rounded-lg"
+                          className="bg-green-500 hover:bg-green-600 text-white py-1 px-2 rounded-lg"
                           onClick={() => handleTaskClick(task)}
                         >
                           View
                         </button>
                         <button
-                          className="bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg shadow"
+                          className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-lg shadow text-white"
                           onClick={() => navigate(`/task/${task._id}`)}
                         >
                           Edit
                         </button>
                         <button
-                          className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded-lg shadow"
+                          className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded-lg shadow text-white"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleTaskDelete(task._id);

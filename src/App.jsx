@@ -13,6 +13,7 @@ function App() {
             <main className="py-3">
                 <Routes>
                     <Route path="/" element={token?<HomeScreen />:<LoginScreen />}  />
+                    <Route path="/home" element={token?<HomeScreen /> :<LoginScreen />} />  {/* Redirects to login if not authenticated */}
                     <Route path="/task/:id" element={token?<TaskScreen /> :<LoginScreen />} />
                     <Route path="/task/" element={token?<TaskScreen /> :<LoginScreen />} />
                     <Route path="/login" element={<LoginScreen />} />

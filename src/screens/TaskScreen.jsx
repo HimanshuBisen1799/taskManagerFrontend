@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getTasks, createTask, updateTask } from "../api";
@@ -70,14 +68,14 @@ const TaskScreen = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-500 to-emerald-600 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-50 to-green-100 p-6">
       <motion.div
-        className="bg-white/10 backdrop-blur-lg shadow-xl rounded-2xl p-8 w-full max-w-lg"
+        className="bg-white backdrop-blur-lg shadow-xl rounded-2xl p-8 w-full max-w-lg"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <h2 className="text-3xl font-semibold text-white text-center mb-6">
+        <h2 className="text-3xl font-semibold text-gray-900 text-center mb-6">
           {id ? "Edit Task" : "Create Task"}
         </h2>
         <motion.form
@@ -94,7 +92,7 @@ const TaskScreen = () => {
               value={formData.title}
               onChange={handleChange}
               required
-              className="w-full p-3 border border-white/30 rounded-lg bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-green-400"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:outline-none"
               placeholder="Task Title"
             />
           </div>
@@ -104,7 +102,7 @@ const TaskScreen = () => {
               value={formData.description}
               onChange={handleChange}
               required
-              className="w-full p-3 border border-white/30 rounded-lg bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-green-400"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:outline-none"
               placeholder="Task Description"
             />
           </div>
@@ -115,7 +113,7 @@ const TaskScreen = () => {
               value={formData.dueDate}
               onChange={handleChange}
               required
-              className="w-full p-3 border border-white/30 rounded-lg bg-transparent text-white placeholder-gray-300 focus:ring-2 focus:ring-green-400"
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -123,26 +121,26 @@ const TaskScreen = () => {
               name="priority"
               value={formData.priority}
               onChange={handleChange}
-              className="p-3 border border-white/30 rounded-lg bg-transparent text-white focus:ring-2 focus:ring-green-400"
+              className="p-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-400 focus:outline-none"
             >
-              <option className="text-black" value="low">Low</option>
-              <option className="text-black" value="medium">Medium</option>
-              <option className="text-black" value="high">High</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
-              className="p-3 border border-white/30 rounded-lg bg-transparent text-white focus:ring-2 focus:ring-green-400"
+              className="p-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-400 focus:outline-none"
             >
-              <option className="text-black" value="pending">Pending</option>
-              <option className="text-black" value="completed">Completed</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
             </select>
           </div>
           <div className="flex justify-between space-x-4 mt-4">
             <motion.button
               type="submit"
-              className="w-full py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-200 transition"
+              className="w-full py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -151,7 +149,7 @@ const TaskScreen = () => {
             <motion.button
               type="button"
               onClick={handleCancel}
-              className="w-full py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition"
+              className="w-full py-3 bg-gray-500 text-white font-semibold rounded-lg hover:bg-gray-600 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
